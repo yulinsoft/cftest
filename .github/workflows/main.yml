@@ -28,7 +28,7 @@ jobs:
           echo "REPO_URL=https://api.github.com/repos/bia-pain-bache/BPB-Worker-Panel/releases" >> $GITHUB_ENV
           echo "TARGET_FILE=worker.zip" >> $GITHUB_ENV
 
-      - name: 检查并更新
+      - name: check_update
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 使用 GitHub Token 认证
         run: |
@@ -78,5 +78,5 @@ jobs:
         if: success() # 仅在更新成功时提交
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🔄 自动同步 版本: ${{ steps.'检查并更新'.outputs.tag_name || '未知' }}"
+          commit_message: "🔄 自动同步 版本: ${{ steps.check_update.outputs.tag_name || '未知' }}"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"

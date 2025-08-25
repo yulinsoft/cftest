@@ -79,5 +79,5 @@ jobs:
         if: success() # 仅在更新成功时提交
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🔄 自动同步 版本: ${{ $TAG_NAME || '未知' }}"
+          commit_message: "🔄 自动同步 版本: $TAG_NAME"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
